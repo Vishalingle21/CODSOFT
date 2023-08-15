@@ -20,6 +20,7 @@ public class game {
         else if (geussNum == num) {
 
             System.out.println("woo hoo! Its correct guess.");
+
         }
 
         else if (geussNum > num && geussNum <= 10 && geussNum > 0) {
@@ -59,14 +60,31 @@ public class game {
                 }
             } else {
 
-                System.out.println("woo hoo! Its correct guess.");
+                // System.out.println("woo hoo! Its correct guess.");
+
+                for (int i = 3; i >= 1; i--) {
+
+                    inputCheck();
+                    Random random = new Random();
+                    num = random.nextInt(10) + 1; // +1 for non zero number
+                    if (geussNum == num) {
+                        i = 1;
+                        break;
+
+                    }
+                    System.out.println("(" + (i - 1) + " attemps left)");
+
+                }
+
             }
         } else if (round == 0) {
+
         } else {
 
             System.out.println("Invalid Input");
             nextRound();
         }
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -81,11 +99,17 @@ public class game {
             for (int i = 3; i >= 1; i--) {
 
                 g.inputCheck();
+                if (geussNum == num) {
+                    i = 1;
+                    break;
+
+                }
                 System.out.println("(" + (i - 1) + " attemps left)");
             }
         } else {
 
             System.out.println("woo hoo! Its correct guess.");
+
         }
         for (int i = 1; i >= 0; i++) {
             g.accept();
